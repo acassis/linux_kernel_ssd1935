@@ -1,0 +1,91 @@
+if ARCH_MAGUS
+
+menu "Magus Implementations"
+
+choice
+        prompt "Select target board"
+
+config ARCH_MAGUS_FPGA
+        bool "Magus FPGA Development Platform"
+
+config ARCH_MAGUS_ADS
+        bool "Magus ADS Development Platform"
+
+config ARCH_MAGUS_ACCIO
+        bool "Magus ACCIO Development Platform"
+
+endchoice
+
+if ARCH_MAGUS_ACCIO
+
+choice
+        prompt "Select accio platform"
+
+config ACCIO_PF101
+        bool "Accio Platform 101"
+
+config ACCIO_PF102
+        bool "Accio Platform 102"
+
+config ACCIO_CM5208
+        bool "Accio Platform CM5208"
+
+config ACCIO_CM5210
+		bool "Accio Platform CM5210"
+
+config ACCIO_A2818T
+	bool "Accio Platform A2818T"
+
+config ACCIO_P1
+	bool "Accio Platform P1"
+
+config ACCIO_LITE
+	bool "Accio Platform Lite"
+
+config LUMOS_WE8623_P0
+	bool "WE8623 Platform P0"
+
+endchoice
+
+endif
+
+config ACCIO_PF101_01
+	tristate
+	depends on ARCH_MAGUS_ACCIO
+	default n
+
+if ACCIO_PF101
+
+choice
+	prompt "Select specific target"
+
+config ACCIO_PF101_01_64MB
+	bool "base model with 64MB memory"
+	select ACCIO_PF101_01
+
+config ACCIO_PF101_01_32MB
+	bool "base model with 32MB memory"
+	select ACCIO_PF101_01
+
+config ACCIO_PF101_02
+	bool "model with 64MB memory and WVGA lcd"
+
+endchoice
+
+endif
+
+config ACCIO_P1_SK01
+	depends on ACCIO_P1
+	bool "base model ACCIO_P1_SK01 with WQVGA lcd"
+
+config ACCIO_LCM_CPT480X272
+    depends on LUMOS_WE8623_P0
+    bool "LCM = CPT CLAA043JA01CT (SSD2123 driver IC), res = 480 x 272"
+
+config ACCIO_LCM_TPO800X480
+    depends on LUMOS_WE8623_P0
+    bool "LCM = TPO TD043MTEA1 (??? driver IC), res = 800 x 480"
+
+endmenu
+
+endif

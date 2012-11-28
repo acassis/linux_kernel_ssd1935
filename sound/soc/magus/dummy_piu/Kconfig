@@ -1,0 +1,3 @@
+config DUMMY_PIU
+	tristate "DUMMY PIU module"
+	depends on SND_SOC

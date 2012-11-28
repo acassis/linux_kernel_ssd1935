@@ -1,0 +1,12 @@
+#
+# Vol Ctrl driver configuration
+#
+# NOTE:  
+#
+config CM5208_ADC081
+	tristate "Magus Aigo (CM5208 || CM5210 || A2818T) Board Power Voltage Support"
+	depends on ACCIO_CM5208 || ACCIO_A2818T || ACCIO_CM5210
+	default y
+	help
+	  Magus Aigo (CM5208 || A2818T || CM5210) Board Power Voltage  driver.
+

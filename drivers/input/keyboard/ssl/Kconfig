@@ -1,0 +1,11 @@
+#
+# Vol Ctrl driver configuration
+#
+# NOTE:  
+#
+config GPIO_VOL
+	tristate "Magus Accio Board Volume Control Support"
+	depends on SND_SOC
+	help
+	  Accio Board volume control driver.
+

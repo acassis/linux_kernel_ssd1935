@@ -1,0 +1,26 @@
+config SND_SOC_MAGUS
+	tristate "Magus Machine"
+	depends on SND_SOC && ARCH_MAGUS_ADS
+config SND_SOC_MAGUS_WM8731
+	tristate "Magus WM8731 codec"
+	depends on SND_SOC && ARCH_MAGUS_ADS
+config SND_SOC_MAGUS_PCM
+	tristate "Magus PCM"
+	depends on SND_SOC && SND_SOC_MAGUS_WM8731
+config SND_SOC_MAGUS_I2S
+	tristate "Magus I2S"
+	depends on SND_SOC && SND_SOC_MAGUS_WM8731
+#config SND_SOC_MAGUS_WM8987
+#	tristate "Magus Accio PF101 or P1 Machine"
+#	depends on SND_SOC
+#config SND_CODEC_MAGUS_WM8987
+#	tristate "Magus WM8987 codec"
+#	depends on SND_SOC
+#config SND_SOC_MAGUS_WM8978
+#	tristate "Magus Accio PF102 Machine"
+#	depends on SND_SOC
+#config SND_CODEC_MAGUS_WM8978
+#	tristate "Magus WM8978 codec"
+#	depends on SND_SOC
+
+source "sound/soc/magus/dummy_piu/Kconfig"
